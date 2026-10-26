@@ -1,0 +1,91 @@
+{
+  "manuscript_version": "v15_20261026",
+  "visibility_intent": "private_review",
+  "domains": [
+    "GL_OCEAN",
+    "GL_LAND",
+    "ND"
+  ],
+  "target": "ACOS_XCO2_minus_operational_prior",
+  "feature_count": 99,
+  "pc_per_band": [
+    30,
+    30,
+    30
+  ],
+  "coefficient_method": "masked_least_squares",
+  "training_years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019
+  ],
+  "validation_year": 2020,
+  "retrospective_test_years": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "2025_partial_year": true,
+  "global_training_rows_per_domain": 1000000,
+  "global_validation_rows_per_domain": 200000,
+  "regional_ND": {
+    "latitude_strict_bounds": [
+      20,
+      45
+    ],
+    "longitude_strict_bounds": [
+      110,
+      145
+    ],
+    "historical_years": [
+      2017,
+      2018,
+      2019
+    ],
+    "split_seed": 1237,
+    "train": 22161,
+    "validation": 2770,
+    "holdout": 2771
+  },
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "lightgbm": {
+    "selection": "fixed_configuration_validation_early_stopping_only",
+    "learning_rate": 0.03,
+    "num_leaves": 31,
+    "min_child_samples": 100,
+    "feature_fraction": 0.9,
+    "bagging_fraction": 0.8,
+    "bagging_freq": 1,
+    "lambda_l2": 1,
+    "max_boosting_rounds": 3000,
+    "early_stopping_rounds": 100
+  },
+  "mlp": {
+    "GL_OCEAN": [
+      220
+    ],
+    "GL_LAND": [
+      164
+    ],
+    "ND": [
+      468,
+      248
+    ],
+    "EAST_ASIA_ND": [
+      544
+    ]
+  },
+  "new_training_performed": false,
+  "weights_included": false,
+  "raw_data_included": false,
+  "standalone_reproduction_claimed": false,
+  "license": null
+}

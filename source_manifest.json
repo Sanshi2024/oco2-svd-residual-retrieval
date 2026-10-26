@@ -1,0 +1,94 @@
+{
+  "files": [
+    {
+      "file": "east_asia_prior99.py",
+      "original_sha256": "b2f162c86f6979604cfebe8806db350163ff790c2e13135462bca47d4fda7e2f",
+      "packaging_changes": null
+    },
+    {
+      "file": "extend_main_epoch500_20261024.py",
+      "original_sha256": "df629322141d2c4e4135e8baeed5491cd17e45763b9dcac76a060faba00041fb",
+      "packaging_changes": null
+    },
+    {
+      "file": "million_pc_sensitivity_20261024.py",
+      "original_sha256": "5fdad62a5a69b34a8378d2fefb18777cd015fbdad019ea8e31f7e2d1005f2daa",
+      "packaging_changes": null
+    },
+    {
+      "file": "reviewer_experiments_20261021.py",
+      "original_sha256": "7f4991126a16380f8bd406423da57955f9c071b8f04eed0fa0685ee36e15450d",
+      "packaging_changes": null
+    },
+    {
+      "file": "run_domain_svd50.py",
+      "original_sha256": "ca6de53157aea5057f6ff8d03ced81e9670eae3375aaffe9dc451d67a503a7ea",
+      "packaging_changes": null
+    },
+    {
+      "file": "run_mlp_dense_search.py",
+      "original_sha256": "60e942f1f3a7e39790e85066b85d17eee2c7002368b0bce03ec5f6a4836ba41d",
+      "packaging_changes": null
+    },
+    {
+      "file": "run_prior99_experiment.py",
+      "original_sha256": "5580c705ddc0839b28133460b50df99e8b0ce4ddea50a53251e26215e0e74d48",
+      "packaging_changes": null
+    },
+    {
+      "file": "run_three_domain_pipeline.py",
+      "original_sha256": "b43a3b30700129647e2542d73e7b61b93ca43a52c2dc19f7beb635fa90e82b0a",
+      "packaging_changes": null
+    },
+    {
+      "file": "search_mlp_secant.py",
+      "original_sha256": "66014a87be5cbe826e712acf455479a217b9902cadc5e133b570d6cbcbea3ce8",
+      "packaging_changes": null
+    },
+    {
+      "file": "section35_epoch500_20261024.py",
+      "original_sha256": "edb14465de4ca9c5aaa3a5ebd1103b83cf9d08218ae8ffc000dbf7d6cefe93d1",
+      "packaging_changes": null
+    },
+    {
+      "file": "summarize_million_pc_sensitivity_20261024.py",
+      "original_sha256": "aab87438da5ff432e67ef91128285ff2a810dcb22f523ec7e41ef92d380f5fe0",
+      "packaging_changes": null
+    },
+    {
+      "file": "train_domain_svd50.py",
+      "original_sha256": "6eff8ad4467ea92904cc6ba17ae4ba7b97af163033e471a903f34d6c3f3b001e",
+      "packaging_changes": null
+    },
+    {
+      "file": "train_prior99_trees.py",
+      "original_sha256": "ecc36cbb7f215795732da37c697b9e556444cdaaa826344b0beed90c5b47b87c",
+      "packaging_changes": null
+    },
+    {
+      "file": "two_route_training_reference.py",
+      "original_sha256": "6d5c50d2e6d0386735ed70c38fc4ee614b316ef02be72301a8fe55fc5feddcdd",
+      "packaging_changes": null
+    },
+    {
+      "file": "verify_million_pc_sensitivity_20261024.py",
+      "original_sha256": "2cc7e6789477fe9f6bab76e4f1b013e99e7c49ad8450db0a5e6016268083c02f",
+      "packaging_changes": null
+    },
+    {
+      "file": "extract_identities.py",
+      "original_sha256": "167af90e96a46489cca86fe1fc0f7ae4a9724b8b66f253007c1dc46eec5b9976",
+      "packaging_changes": null
+    },
+    {
+      "file": "infer_features.py",
+      "original_sha256": "6f7f462eb4788c525480ce2b636be33f431c2c9b6d41e15f23e1f4ea0609d3fe",
+      "packaging_changes": "Root-level layout; resolve only supplied local model/scaler paths, no remote-server option."
+    },
+    {
+      "file": "plot_targets.py",
+      "original_sha256": "cd6475e06d614fc1b521ee78c21efe464315d7fdb771fe7d2ef7cff7332f7da5",
+      "packaging_changes": null
+    }
+  ]
+}

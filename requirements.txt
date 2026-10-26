@@ -1,0 +1,12 @@
+# Observed compatible environment, not an original-training lockfile.
+# Install PyTorch/CUDA for the intended machine separately if necessary.
+numpy==2.3.3
+scipy==1.16.2
+pandas==2.3.3
+h5py==3.14.0
+joblib==1.5.2
+scikit-learn==1.7.2
+lightgbm==4.6.0
+torch==2.7.1
+optuna==4.6.0
+matplotlib==3.10.6

@@ -1,0 +1,4 @@
+Domain,Prior RMSE,MLP RMSE,LightGBM RMSE,Reduction,2025 bias
+GL ocean,1.743,0.894,1.095,48.7%,+0.452
+GL land,2.665,1.399,1.591,47.5%,+0.742
+ND,3.401,1.433,2.047,57.9%,+0.651
