@@ -13,13 +13,13 @@ from types import SimpleNamespace
 import numpy as np
 import torch
 
-ENGINE = Path('/workspace_hdd/xianlei/OCO2/scripts/ML/paper_future_generalization/prior99_global_and_east_asia_20261018')
+ENGINE = Path('/path/to/OCO2/scripts/ML/paper_future_generalization/prior99_global_and_east_asia_20261018')
 sys.path.insert(0, str(ENGINE))
 import search_mlp_secant as engine
 import train_domain_svd50 as features
 import two_route_training_reference as reference
 
-ML = Path('/workspace_hdd/xianlei/OCO2/output/ML')
+ML = Path('/path/to/OCO2/output/ML')
 SOURCE = ML / 'Paper_ThreeDomain_Edge30_SVD30_1519Train_2020Val_2021_2025Test'
 MAIN = ML / 'Paper_ThreeDomain_Global_Prior99_1519Train_2020Val_2021_2025Test_20261018'
 OUT = ML / 'Paper_Section35_Epoch500_20261024'

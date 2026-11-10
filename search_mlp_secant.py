@@ -148,9 +148,6 @@ def standardize(x, median, mean, scale):
 
 
 def prepare(args, folder):
-    if args.regional_spec:
-        import east_asia_prior99 as regional
-        return regional.prepare(args, folder, sys.modules[__name__])
     limit = 40 if args.smoke else None
     parts = [features.load_year(args.source, year, args.domain, limit, args.include_xco2_prior)
              for year in range(2015, 2020)]
@@ -414,7 +411,7 @@ def search(args, folder, data, device):
                              "validation_rmse_std": float(np.std(scores)), "initial_trial": trial.number})
         write_json(folder / "confirmation.json", confirmation)
     selected = min(confirmation, key=lambda c: c["validation_rmse_mean"])
-    selected_on = "2017-2019 random validation only" if args.regional_spec else "2020 validation only"
+    selected_on = "2020 validation only"
     frozen = {"domain": args.domain, "route": args.route, "selected_on": selected_on,
               "selection_statistic": "mean validation RMSE across three seeds" if not args.smoke else "smoke only",
               "selected": selected, "smoke": args.smoke, "feature_count": data.x.shape[1],
@@ -435,17 +432,13 @@ def evaluate_selected(args, folder, data, device):
         return
     frozen = json.loads((folder / "selection_frozen.json").read_text())
     selected = frozen["selected"]
-    training_years = "2017-2019" if args.regional_spec else "2015-2019"
-    validation_key = "historical_validation" if args.regional_spec else "2020"
+    training_years = "2015-2019"
+    validation_key = "2020"
     splits = {"train": reference.Split(data.x, data.y, data.prior, training_years, "train"),
               validation_key: reference.Split(data.val_x, data.val_y, data.val_prior, validation_key, "validation")}
     identities = {}
     limit = 40 if args.smoke else None
-    if args.regional_spec:
-        import east_asia_prior99 as regional
-        extra_splits, identities = regional.evaluation_splits(args, data)
-        splits.update(extra_splits)
-    for year in (() if args.regional_spec else range(2021, 2026)):
+    for year in range(2021, 2026):
         x, y, prior = features.load_year(args.source, year, args.domain, limit, args.include_xco2_prior)
         standardize(x, data.median, data.mean, data.scale)
         splits[str(year)] = reference.Split(x, y, prior, year, "test")
@@ -486,7 +479,7 @@ def evaluate_selected(args, folder, data, device):
     write_json(folder / "complete.json", {
         "status": "complete", "smoke": args.smoke, "domain": args.domain, "route": args.route,
         "seed_models": len(selected["runs"]), "summary_rows": len(summary), "training_rows": len(data.y),
-        "feature_count": data.x.shape[1], "test_years": list(range(2020 if args.regional_spec else 2021, 2026)),
+        "feature_count": data.x.shape[1], "test_years": list(range(2021, 2026)),
         "selected": selected,
     })
 
@@ -502,7 +495,6 @@ def main():
     parser.add_argument("--baseline-root", type=Path)
     parser.add_argument("--architecture-only-config", type=Path)
     parser.add_argument("--include-xco2-prior", action="store_true")
-    parser.add_argument("--regional-spec", type=Path)
     parser.add_argument("--domain", choices=features.DOMAINS, required=True)
     parser.add_argument("--route", choices=reference.ROUTES, required=True)
     parser.add_argument("--phase", choices=("search", "evaluate"), default="search")
@@ -539,11 +531,6 @@ def main():
               "reference_script_sha256": hashlib.sha256(Path(reference.__file__).read_bytes()).hexdigest()}
     if args.architecture_only_config:
         config["architecture_only_config"] = json.loads(args.architecture_only_config.read_text())
-    if args.regional_spec:
-        import east_asia_prior99 as regional
-        assert args.domain == "ND" and args.include_xco2_prior
-        config["regional_spec"] = json.loads(args.regional_spec.read_text())
-        config["regional_script_sha256"] = hashlib.sha256(Path(regional.__file__).read_bytes()).hexdigest()
     path = folder / "config.json"
     if path.exists():
         assert json.loads(path.read_text()) == config, "Never reuse a study with a different configuration"

@@ -1,6 +1,5 @@
 {
-  "manuscript_version": "v15_20261026",
-  "visibility_intent": "private_review",
+  "manuscript_version": "2026-11-10",
   "domains": [
     "GL_OCEAN",
     "GL_LAND",
@@ -33,6 +32,7 @@
   "global_training_rows_per_domain": 1000000,
   "global_validation_rows_per_domain": 200000,
   "regional_ND": {
+    "screening": "Chen et al. (2025) published SpT criteria",
     "latitude_strict_bounds": [
       20,
       45
@@ -41,15 +41,17 @@
       110,
       145
     ],
-    "historical_years": [
-      2017,
-      2018,
-      2019
+    "annual_model": "frozen_global_ND",
+    "annual_comparison_years": [
+      2020,
+      2021,
+      2022
     ],
-    "split_seed": 1237,
-    "train": 22161,
-    "validation": 2770,
-    "holdout": 2771
+    "rolling_initialization": "frozen_global_ND",
+    "rolling_quarters": [
+      "2021Q1",
+      "2024Q1"
+    ]
   },
   "seeds": [
     17,
@@ -57,14 +59,7 @@
     43
   ],
   "lightgbm": {
-    "selection": "fixed_configuration_validation_early_stopping_only",
-    "learning_rate": 0.03,
-    "num_leaves": 31,
-    "min_child_samples": 100,
-    "feature_fraction": 0.9,
-    "bagging_fraction": 0.8,
-    "bagging_freq": 1,
-    "lambda_l2": 1,
+    "selection": "validation_selected",
     "max_boosting_rounds": 3000,
     "early_stopping_rounds": 100
   },
@@ -78,9 +73,6 @@
     "ND": [
       468,
       248
-    ],
-    "EAST_ASIA_ND": [
-      544
     ]
   },
   "new_training_performed": false,
